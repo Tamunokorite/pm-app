@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo-template/core",
+  "name": "@project-management-app/core",
   "version": "0.0.0",
   "scripts": {
     "test": "sst shell vitest"
@@ -11,7 +11,7 @@
     ]
   },
   "dependencies": {
-    "sst": "*"
+    "sst": "3.4.18"
   },
   "devDependencies": {
     "vitest": "^2.0.3"

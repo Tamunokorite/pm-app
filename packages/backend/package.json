@@ -1,0 +1,13 @@
+{
+  "name": "@project-management-app/backend",
+  "version": "0.0.0",
+  "dependencies": {
+    "@hono/zod-validator": "^0.4.2",
+    "@project-management-app/core": "*",
+    "bcryptjs": "^2.4.3",
+    "sst": "3.4.18"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6"
+  }
+}
