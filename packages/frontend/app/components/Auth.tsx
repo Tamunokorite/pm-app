@@ -67,6 +67,16 @@ export function Auth({
                       required
                     />
                   </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="orgname">Organization Name</Label>
+                    <Input
+                      id="orgname"
+                      name="orgname"
+                      type="text"
+                      placeholder="Enter your Organization name"
+                      required
+                    />
+                  </div>
                 </>
               )}
             <div className="grid gap-2">

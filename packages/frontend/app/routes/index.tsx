@@ -60,7 +60,9 @@ function Home() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button>Get Started</Button>
+                <Button asChild>
+                  <Link href='/signup'>Get Started</Link>
+                </Button>
                 <Button variant="outline">Learn More</Button>
               </div>
             </div>

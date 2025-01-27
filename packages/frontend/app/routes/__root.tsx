@@ -38,7 +38,7 @@ export const Route = createRootRoute({
       },
       ...seo({
         title:
-          'TanStack Start | Type-Safe, Client-First, Full-Stack React Framework',
+          'WorkWise Project Management',
         description: `WorkWise Project Management`,
       }),
     ],

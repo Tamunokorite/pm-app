@@ -30,7 +30,7 @@ function transformTasksToColumns(tasks: any[]) {
   }));
 
   // Populate tasks into the appropriate columns based on status
-  tasks.forEach((task: any) => {
+  tasks?.forEach((task: any) => {
     const { id, title, status } = task;
     const column: any = columns.find((col) => col.id === status);
     if (column) {
@@ -42,7 +42,7 @@ function transformTasksToColumns(tasks: any[]) {
 }
 
 export function KanbanBoard() {
-  const { tasks } = Route.useRouteContext()
+  const { tasks } = Route.useLoaderData()
 
   const initialColumns = transformTasksToColumns(tasks)
 

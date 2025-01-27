@@ -21,7 +21,7 @@ api.interceptors.request.use(async (config) => {
 });
 
 export const authService = {
-  async register(data: RegisterData) {
+  async register(data: Omit<RegisterData, "redirectUrl">) {
     const response = await api.post('/register', data);
     return response.data;
   },
@@ -80,6 +80,11 @@ export const orgService = {
   async getUserTasks() {
     const session = await useAppSession()
     const response = await api.get('/tasks')
+    return response.data
+  },
+
+  async getProjectTasks(projectId: number) {
+    const response = await api.get(`/projects/${projectId}/tasks`)
     return response.data
   },
 

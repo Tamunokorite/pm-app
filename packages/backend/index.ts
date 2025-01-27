@@ -293,7 +293,8 @@ app.post('/organizations', handleErrors(async (c) => {
     .insert(schema.organizationMembers)
     .values({
       userId,
-      organizationId: result.id
+      organizationId: result.id,
+      role: 'owner'
     })
     .returning()
     .get()
@@ -346,6 +347,25 @@ app.get('/projects/:id', handleErrors(async (c) => {
   const result = await db().select().from(schema.projects).where(eq(schema.projects.id, parseInt(id))).all();
   return c.json(result.length ? result[0] : { error: 'Project not found' }, result.length ? 200 : 404);
 }));
+
+app.get('/projects/:id/tasks', handleErrors(async (c) => {
+  const id = c.req.param('id');
+  const userId = c.get('userId');
+  console.log('fetching project tasks', { id, userId });
+  
+  const result = await db()
+    .select({
+      id: schema.tasks.id,
+      title: schema.tasks.title,
+      assignedTo: schema.tasks.assignedToId,
+      status: schema.tasks.status
+    })
+    .from(schema.tasks)
+    .where(and(eq(schema.tasks.projectId, parseInt(id)), eq(schema.tasks.assignedToId, userId)))
+    .all();
+  return c.json(result);
+}));
+
 
 app.post('/projects', handleErrors(async (c) => {
   const data = await c.req.json();
